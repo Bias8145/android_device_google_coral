@@ -515,10 +515,28 @@ on property:sys.boot_completed=1
     # Runtime fs tuning
     write /sys/block/sda/queue/nr_requests 128
     write /sys/block/sda/queue/iostats 0
+    write /sys/block/sda/queue/nomerges 2
+    write /sys/block/sda/queue/read_ahead_kb  256
+    write /sys/block/sdb/queue/nr_requests 128
+    write /sys/block/sdb/queue/iostats 0
+    write /sys/block/sdb/queue/nomerges 2
+    write /sys/block/sdb/queue/read_ahead_kb  256
+    write /sys/block/sdc/queue/nr_requests 128
+    write /sys/block/sdc/queue/iostats 0
+    write /sys/block/sdc/queue/nomerges 2
+    write /sys/block/sdc/queue/read_ahead_kb  256
+    write /sys/block/sdd/queue/nr_requests 128
+    write /sys/block/sdd/queue/iostats 0
+    write /sys/block/sdd/queue/nomerges 2
+    write /sys/block/sdd/queue/read_ahead_kb  256
     write /sys/block/sde/queue/nr_requests 128
     write /sys/block/sde/queue/iostats 0
+    write /sys/block/sde/queue/nomerges 2
+    write /sys/block/sde/queue/read_ahead_kb  256
     write /sys/block/sdf/queue/nr_requests 128
     write /sys/block/sdf/queue/iostats 0
+    write /sys/block/sdf/queue/nomerges 2
+    write /sys/block/sdf/queue/read_ahead_kb  256
 
     # Limit 4KB discards to 2GB of space
     write /dev/sys/fs/by-name/userdata/max_small_discards 5120
