@@ -770,8 +770,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Configure experimental prop
 PRODUCT_PRODUCT_PROPERTIES += \
-    debug.hwui.renderer=skiagl \
-    debug.renderengine.backend=skiaglthreaded \
     debug.hwui.skia_atrace_enabled=false \
     debug.sf.enable_hwc_vds=0 \
     debug.sf.predict_hwc_composition_strategy=0 \
@@ -789,6 +787,20 @@ PRODUCT_PRODUCT_PROPERTIES += \
     debug.gralloc.map_fb_memory=1 \
     debug.gralloc.gpu_compression_disable=1 \
     debug.gralloc.vram_debug=0
+
+# Configure Render used Vulkan
+PRODUCT_PRODUCT_PROPERTIES += \
+    debug.hwui.renderer=vulkan \
+    ro.hwui.use_vulkan=true \
+    debug.renderengine.backend=vulkanthreaded \
+    debug.sf.gpu_comp_tiling=1 \
+    debug.composition.type=vulkan \
+    persist.sys.composition.type=vulkan
+
+# Dalvik Virtual Machine
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.dalvik.hyperthreading=true \
+    persist.sys.dalvik.multithread=true
 
 # Do not skip init trigger by default
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
