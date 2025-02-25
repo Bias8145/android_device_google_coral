@@ -61,9 +61,6 @@ endif
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
-# Inherit device configuration
-$(call inherit-product, device/google/coral/aosp_coral.mk)
-
 include device/google/coral/coral/device-lineage.mk
 
 PRODUCT_MANUFACTURER := Google
