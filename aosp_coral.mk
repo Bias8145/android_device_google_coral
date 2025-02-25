@@ -20,9 +20,6 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_system.mk)
 
-# Enable mainline checking
-PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := strict
-
 #
 # All components inherited here go to system_ext image
 #
@@ -61,8 +58,33 @@ ifneq (REL,$(PLATFORM_VERSION_CODENAME))
   PRODUCT_PACKAGES += com.android.vndk.current.on_vendor
 endif
 
+# Inherit some common Lineage stuff.
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+
+# Inherit device configuration
+$(call inherit-product, device/google/coral/aosp_coral.mk)
+
+include device/google/coral/coral/device-lineage.mk
+
 PRODUCT_MANUFACTURER := Google
-PRODUCT_BRAND := Android
+PRODUCT_BRAND := google
 PRODUCT_NAME := aosp_coral
 PRODUCT_DEVICE := coral
-PRODUCT_MODEL := AOSP on coral
+PRODUCT_MODEL := Pixel 4 XL
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 3040
+TARGET_SCREEN_WIDTH := 1440
+TARGET_BOOT_ANIMATION_RES := 1080
+
+# Flags for aosPB
+CUSTOM_BUILDTYPE := OFFICIAL
+IS_SIGNED := true
+CUSTOM_MAINTAINER := Khaliq
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    BuildDesc="coral-user 13 TP1A.221005.002.B2 9382335 release-keys" \
+    BuildFingerprint=google/coral/coral:13/TP1A.221005.002.B2/9382335:user/release-keys \
+    DeviceProduct=coral
+
+$(call inherit-product, vendor/google/coral/coral-vendor.mk)
