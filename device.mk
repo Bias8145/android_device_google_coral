@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Inherit some aosPB-Project flags
+$(call inherit-product-if-exists, device/google/coral/flags.mk)
+
 LOCAL_PATH := device/google/coral
 
 PRODUCT_VENDOR_MOVE_ENABLED := true
