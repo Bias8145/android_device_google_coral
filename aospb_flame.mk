@@ -64,7 +64,7 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 include device/google/coral/flame/device-lineage.mk
 
 PRODUCT_MANUFACTURER := Google
-PRODUCT_BRAND := Android
+PRODUCT_BRAND := google
 PRODUCT_NAME := aospb_flame
 PRODUCT_DEVICE := flame
 PRODUCT_MODEL := Pixel 4
