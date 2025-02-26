@@ -65,7 +65,7 @@ include device/google/coral/coral/device-lineage.mk
 
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := google
-PRODUCT_NAME := aosp_coral
+PRODUCT_NAME := aospb_coral
 PRODUCT_DEVICE := coral
 PRODUCT_MODEL := Pixel 4 XL
 
@@ -73,11 +73,6 @@ PRODUCT_MODEL := Pixel 4 XL
 TARGET_SCREEN_HEIGHT := 3040
 TARGET_SCREEN_WIDTH := 1440
 TARGET_BOOT_ANIMATION_RES := 1080
-
-# Flags for aosPB
-CUSTOM_BUILDTYPE := OFFICIAL
-IS_SIGNED := true
-CUSTOM_MAINTAINER := Khaliq
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="coral-user 13 TP1A.221005.002.B2 9382335 release-keys" \
