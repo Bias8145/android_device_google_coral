@@ -58,7 +58,7 @@ ifneq (REL,$(PLATFORM_VERSION_CODENAME))
   PRODUCT_PACKAGES += com.android.vndk.current.on_vendor
 endif
 
-# Inherit some common Lineage stuff.
+# Inherit some common aosPB stuff.
 $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 include device/google/coral/coral/device-lineage.mk
