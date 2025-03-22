@@ -488,6 +488,12 @@
       "Value": "9999999"
     },
     {
+       "PowerHint": "LAUNCH",
+       "Node": "CPULittleClusterMaxFreq",
+       "Duration": 3500,
+       "Value": "9999999"
+    },
+    {
       "PowerHint": "LAUNCH",
       "Node": "CPULittleClusterMinFreq",
       "Duration": 3500,
@@ -546,6 +552,12 @@
       "Node": "LLCCBWMinFreq",
       "Duration": 3500,
       "Value": "6881"
+    },
+    {
+      "PowerHint": "LAUNCH",
+      "Node": "L3LittleClusterMinFreq",
+      "Duration": 3500,
+      "Value": "1440000000"
     },
     {
       "PowerHint": "LAUNCH",
