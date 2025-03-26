@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Inherit some aosPB-Project flags
+$(call inherit-product-if-exists, device/google/coral/flags.mk)
+
 LOCAL_PATH := device/google/coral
 
 PRODUCT_VENDOR_MOVE_ENABLED := true
@@ -613,7 +616,6 @@ PRODUCT_COPY_FILES += \
     device/google/coral/audio/acdbdata/OEM/sm8150-iaxxx-f2proto-snd-card/Codec_cal.acdb:$(TARGET_COPY_OUT_VENDOR)/etc/acdbdata/OEM/sm8150-iaxxx-f2proto-snd-card/Codec_cal.acdb \
     device/google/coral/audio/acdbdata/adsp_avs_config.acdb:$(TARGET_COPY_OUT_VENDOR)/etc/acdbdata/adsp_avs_config.acdb
 
-
 # Audio ACDB workspace files for QACT
 ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_COPY_FILES += \
@@ -643,11 +645,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.snd_card.open.retries=50
 
-
 ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 # Subsystem ramdump
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.sys.ssr.enable_ramdumps=1
+    persist.vendor.sys.ssr.enable_ramdumps=0
 endif
 
 # Subsystem silent restart
@@ -664,11 +665,11 @@ PRODUCT_PACKAGES += \
 ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 # b/36703476: Set default log size to 1M
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.logd.size=1M
+  ro.logd.size=256K
 # b/114766334: persist all logs by default rotating on 30 files of 1MiB
 PRODUCT_PROPERTY_OVERRIDES += \
-  logd.logpersistd=logcatd \
-  logd.logpersistd.size=30
+  logd.logpersistd= \
+  logd.logpersistd.size=5
 endif
 
 # Dumpstate HAL
@@ -742,7 +743,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.systemuicompilerfilter=speed
 
 # Enable stats logging in LMKD
-TARGET_LMKD_STATS_LOG := true
+TARGET_LMKD_STATS_LOG := false
 
 # default usb oem functions
 ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
@@ -768,7 +769,45 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += debug.sf.earlyGl.app.duration=21000000
 
 # Enable backpressure for GL comp
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.enable_gl_backpressure=1
+    debug.sf.enable_gl_backpressure=0
+
+# Configure experimental prop
+PRODUCT_PRODUCT_PROPERTIES += \
+    debug.hwui.skia_atrace_enabled=false \
+    debug.sf.enable_hwc_vds=0 \
+    debug.sf.predict_hwc_composition_strategy=0 \
+    debug.gr.swapinterval=0 \
+    debug.hwui.render_dirty_regions=false \
+    debug.sf.deferglcontext=0 \
+    debug.sf.cpusets=0 \
+    debug.sf.vsync_switch=0 \
+    debug.sf.triple_buffer=0 \
+    debug.sf.maxlayers=0xff \
+    debug.hwui.render_ahead_mode=0 \
+    debug.hwui.render_ahead=false \
+    debug.hwui.disable_vsync=true \
+    debug.gralloc.wfd_enable=1 \
+    debug.gralloc.map_fb_memory=1 \
+    debug.gralloc.gpu_compression_disable=1 \
+    debug.gralloc.vram_debug=0
+
+# Configure Render used Vulkan
+PRODUCT_PRODUCT_PROPERTIES += \
+    debug.hwui.renderer=vulkan \
+    ro.hwui.use_vulkan=true \
+    debug.renderengine.backend=vulkanthreaded \
+    debug.sf.gpu_comp_tiling=1 \
+    debug.composition.type=vulkan \
+    persist.sys.composition.type=vulkan
+
+# Dalvik Virtual Machine
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.dalvik.hyperthreading=true \
+    persist.sys.dalvik.multithread=true
+
+# Disable default frame rate limit for games
+PRODUCT_PRODUCT_PROPERTIES += \
+    debug.graphics.game_default_frame_rate.disabled=true
 
 # Do not skip init trigger by default
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -828,7 +867,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
-
 # Disable SPU usage
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gatekeeper.disable_spu = true
@@ -841,7 +879,7 @@ endif
 # Vendor verbose logging default property
 ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.verbose_logging_enabled=true
+    persist.vendor.verbose_logging_enabled=false
 else
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.verbose_logging_enabled=false
@@ -887,3 +925,4 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota_retrofit.mk)
 
 # Update soong config namespace
 -include vendor/google/build/soong/soong_config_namespace/qcril_oemhook.mk
+-include vendor/lineage-priv/keys/keys.mk
