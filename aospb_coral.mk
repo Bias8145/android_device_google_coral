@@ -59,13 +59,13 @@ ifneq (REL,$(PLATFORM_VERSION_CODENAME))
 endif
 
 # Inherit some common aosPB stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 include device/google/coral/coral/device-lineage.mk
 
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := google
-PRODUCT_NAME := lineage_coral
+PRODUCT_NAME := aospb_coral
 PRODUCT_DEVICE := coral
 PRODUCT_MODEL := Pixel 4 XL
 
@@ -77,8 +77,6 @@ TARGET_BOOT_ANIMATION_RES := 1080
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="coral-user 13 TP1A.221005.002.B2 9382335 release-keys" \
     BuildFingerprint=google/coral/coral:13/TP1A.221005.002.B2/9382335:user/release-keys \
-    DeviceProduct=coral \
-    RisingChipset="Snapdragon™ 855" \
-    RisingMaintainer="Bias Khaliq"
+    DeviceProduct=coral
 
 $(call inherit-product, vendor/google/coral/coral-vendor.mk)
