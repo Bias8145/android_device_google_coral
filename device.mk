@@ -921,3 +921,4 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota_retrofit.mk)
 
 # Update soong config namespace
 -include vendor/google/build/soong/soong_config_namespace/qcril_oemhook.mk
+-include vendor/lineage-priv/keys/keys.mk
