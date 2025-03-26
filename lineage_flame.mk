@@ -1,29 +1,84 @@
 #
-# Copyright (C) 2020-2021 The LineageOS Project
+# Copyright 2018 The Android Open Source Project
 #
-# SPDX-License-Identifier: Apache-2.0
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 #
 
-# Inherit some common Lineage stuff.
+#
+# All components inherited here go to system image
+#
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_system.mk)
+
+#
+# All components inherited here go to system_ext image
+#
+$(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_system_ext.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
+
+#
+# All components inherited here go to product image
+#
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_product.mk)
+
+#
+# All components inherited here go to vendor image
+#
+# TODO(b/136525499): move *_vendor.mk into the vendor makefile later
+TARGET_SUPPORTS_OMX_SERVICE := false
+$(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
+
+$(call inherit-product, device/google/coral/device-flame.mk)
+$(call inherit-product-if-exists, vendor/google_devices/coral/proprietary/device-vendor.mk)
+$(call inherit-product-if-exists, vendor/google_devices/coral/prebuilts/device-vendor-flame.mk)
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
+
+# Don't build super.img.
+PRODUCT_BUILD_SUPER_PARTITION := false
+
+# b/113232673 STOPSHIP deal with Qualcomm stuff later
+# PRODUCT_RESTRICT_VENDOR_FILES := all
+
+# Keep the VNDK APEX in /system partition for REL branches as these branches are
+# expected to have stable API/ABI surfaces.
+ifneq (REL,$(PLATFORM_VERSION_CODENAME))
+  PRODUCT_PACKAGES += com.android.vndk.current.on_vendor
+endif
+
+# Inherit some common aosPB stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
-
-# Inherit device configuration
-$(call inherit-product, device/google/coral/aosp_flame.mk)
 
 include device/google/coral/flame/device-lineage.mk
 
-# Device identifier. This must come after all inclusions
+PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := google
-PRODUCT_MODEL := Pixel 4
 PRODUCT_NAME := lineage_flame
+PRODUCT_DEVICE := flame
+PRODUCT_MODEL := Pixel 4
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2280
 TARGET_SCREEN_WIDTH := 1080
+TARGET_BOOT_ANIMATION_RES := 1080
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="flame-user 13 TP1A.221005.002.B2 9382335 release-keys" \
     BuildFingerprint=google/flame/flame:13/TP1A.221005.002.B2/9382335:user/release-keys \
-    DeviceProduct=flame
+    DeviceProduct=flame \
+    RisingChipset="Snapdragon™ 855" \
+    RisingMaintainer="Bias Khaliq"
 
 $(call inherit-product, vendor/google/flame/flame-vendor.mk)
