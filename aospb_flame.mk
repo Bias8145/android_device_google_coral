@@ -59,13 +59,13 @@ ifneq (REL,$(PLATFORM_VERSION_CODENAME))
 endif
 
 # Inherit some common aosPB stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 include device/google/coral/flame/device-lineage.mk
 
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := google
-PRODUCT_NAME := lineage_flame
+PRODUCT_NAME := aospb_flame
 PRODUCT_DEVICE := flame
 PRODUCT_MODEL := Pixel 4
 
@@ -77,8 +77,5 @@ TARGET_BOOT_ANIMATION_RES := 1080
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="flame-user 13 TP1A.221005.002.B2 9382335 release-keys" \
     BuildFingerprint=google/flame/flame:13/TP1A.221005.002.B2/9382335:user/release-keys \
-    DeviceProduct=flame \
-    RisingChipset="Snapdragon™ 855" \
-    RisingMaintainer="Bias Khaliq"
-
+    DeviceProduct=flame
 $(call inherit-product, vendor/google/flame/flame-vendor.mk)
