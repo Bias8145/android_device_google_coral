@@ -65,7 +65,7 @@ include device/google/coral/coral/device-lineage.mk
 
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := google
-PRODUCT_NAME := aosp_coral
+PRODUCT_NAME := aospb_coral
 PRODUCT_DEVICE := coral
 PRODUCT_MODEL := Pixel 4 XL
 
