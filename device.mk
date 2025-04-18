@@ -28,6 +28,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom/sm8150/display \
     hardware/qcom/sm8150/gps \
     hardware/qcom/wlan/legacy \
+    hardware/qcom-caf/bootctrl \
     system/chre/host/hal_generic \
     vendor/qcom/opensource/data-ipa-cfg-mgr-legacy-um
 
@@ -118,10 +119,6 @@ PRODUCT_PACKAGES += \
 # Use Sdcardfs
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.sys.sdcardfs=1
-
-PRODUCT_PACKAGES += \
-    bootctrl.msmnile \
-    bootctrl.msmnile.recovery
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.cp_system_other_odex=1
@@ -338,10 +335,6 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
     vendor.qti.hardware.display.allocator-service
 
-# RenderScript HAL
-PRODUCT_PACKAGES += \
-    android.hardware.renderscript@1.0-impl
-
 # Light HAL
 PRODUCT_PACKAGES += \
     lights.msmnile \
@@ -452,9 +445,10 @@ endif
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-impl-pixel-legacy \
-    android.hardware.boot@1.2-impl-pixel-legacy.recovery \
-    android.hardware.boot@1.2-service \
+    android.hardware.boot-service.qti \
+    android.hardware.boot-service.qti.recovery
+
+$(call soong_config_set,QTI_GPT_UTILS,USE_BSG_FRAMEWORK,false)
 
 # Thermal HAL config
 PRODUCT_COPY_FILES += \
@@ -494,7 +488,6 @@ endif
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     wificond \
-    libwpa_client \
     WifiOverlay
 
 # Connectivity
@@ -900,7 +893,7 @@ PRODUCT_VENDOR_PROPERTIES += ro.soc.model=SM8150
 -include vendor/qcom/sm8150/proprietary/securemsm/config/keymaster_vendor_proprietary_product.mk
 
 include hardware/google/pixel/common/pixel-common-device.mk
-include hardware/google/pixel/vibrator/cs40l25/device.mk
+include device/google/coral/vibrator/cs40l25/device.mk
 include hardware/google/pixel/pixelstats/device.mk
 include hardware/google/pixel/mm/device_legacy.mk
 include device/google/gs-common/thermal/thermal_hal/device.mk

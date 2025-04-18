@@ -77,7 +77,7 @@ TARGET_RECOVERY_WIPE := device/google/coral/recovery.wipe
 TARGET_RECOVERY_FSTAB := device/google/coral/fstab.hardware
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_RECOVERY_UI_LIB := \
-    librecovery_ui_pixel \
+    //hardware/google/pixel/recovery:librecovery_ui_pixel \
     libfstab
 
 # Enable chain partition for system.
@@ -131,9 +131,6 @@ TARGET_USES_HARDWARE_QCOM_GPS := false
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 
-# RenderScript
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-
 # Sensors
 TARGET_SUPPORT_DIRECT_REPORT := true
 # Enable sensor Version V_2
@@ -143,7 +140,6 @@ USE_SENSOR_HAL_VER := 2.0
 CHRE_DAEMON_ENABLED := true
 CHRE_DAEMON_LPMA_ENABLED := true
 CHRE_DAEMON_LOAD_INTO_SENSORSPD := true
-CHRE_DAEMON_USE_SDSPRPC := true
 
 # wlan
 BOARD_WLAN_DEVICE := qcwcn

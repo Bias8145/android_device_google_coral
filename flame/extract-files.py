@@ -16,7 +16,6 @@ from extract_utils.fixups_blob import (
     blob_fixups_user_type,
 )
 from extract_utils.fixups_lib import (
-    lib_fixup_remove,
     lib_fixups,
     lib_fixups_user_type,
 )
@@ -45,9 +44,6 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.qti.hardware.tui_comm@1.0',
         'vendor.qti.imsrtpservice@3.0',
     ): lib_fixup_vendor_suffix,
-    (
-        'libwpa_client',
-    ): lib_fixup_remove,
 }
 
 blob_fixups: blob_fixups_user_type = {
@@ -57,6 +53,8 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('qulacomm', 'qualcomm'),
     'system_ext/priv-app/HbmSVManager/HbmSVManager.apk': blob_fixup()
         .apktool_patch('HbmSVManager.patch', '-r'),
+    'vendor/bin/color_init': blob_fixup()
+        .add_needed('libbase_shim.so'),
     (
         'vendor/bin/hw/android.hardware.rebootescrow-service.citadel',
         'vendor/lib64/android.hardware.keymaster@4.1-impl.nos.so',
