@@ -12,14 +12,22 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
 
 package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-cc_library {
-    name: "bootctrl.msmnile",
-    defaults: ["bootctrl_hal_defaults"],
-    static_libs: ["libgptutils.coral"],
+cc_benchmark {
+    name: "VibratorHalCs40l25Benchmark",
+    defaults: ["VibratorHalCs40l25TestDefaults"],
+    srcs: [
+        "benchmark.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+    ],
+    // TODO(b/135767253): Remove when fixed.
+    test_suites: ["device-tests"],
+    // TODO(b/142024316): Remove when fixed.
+    require_root: true,
 }
