@@ -21,11 +21,11 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aospb_coral.mk \
-    $(LOCAL_DIR)/aospb_flame.mk \
-    $(LOCAL_DIR)/aospb_coral_hwasan.mk \
-    $(LOCAL_DIR)/aospb_flame_hwasan.mk
+    $(LOCAL_DIR)/aosp_coral.mk \
+    $(LOCAL_DIR)/aosp_flame.mk \
+    $(LOCAL_DIR)/aosp_coral_hwasan.mk \
+    $(LOCAL_DIR)/aosp_flame_hwasan.mk
 
 COMMON_LUNCH_CHOICES := \
-    aospb_coral-trunk_staging-userdebug \
-    aospb_flame-trunk_staging-userdebug
+    aosp_coral-trunk_staging-userdebug \
+    aosp_flame-trunk_staging-userdebug

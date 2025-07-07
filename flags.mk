@@ -1,8 +1,6 @@
 #
-# Copyright (C) 2025 aosPB-Project
+# Copyright (C) 2025 aosp
 #
 
-# Flags for aosPB
-CUSTOM_BUILDTYPE := special
-IS_SIGNED := true
-CUSTOM_MAINTAINER := Khaliq
+# Flags for aosp
+

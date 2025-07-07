@@ -61,11 +61,11 @@ endif
 # Inherit some common aosPB stuff.
 $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
-include device/google/coral/coral/device-lineage.mk
+include device/google/coral/coral/device-aosp.mk
 
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := google
-PRODUCT_NAME := aospb_coral
+PRODUCT_NAME := aosp_coral
 PRODUCT_DEVICE := coral
 PRODUCT_MODEL := Pixel 4 XL
 
