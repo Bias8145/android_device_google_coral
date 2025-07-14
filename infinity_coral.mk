@@ -59,13 +59,13 @@ ifneq (REL,$(PLATFORM_VERSION_CODENAME))
 endif
 
 # Inherit some common aosPB stuff.
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+$(call inherit-product, vendor/infinity/config/common_full_phone.mk)
 
 include device/google/coral/coral/device-aosp.mk
 
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := google
-PRODUCT_NAME := aosp_coral
+PRODUCT_NAME := infinity_coral
 PRODUCT_DEVICE := coral
 PRODUCT_MODEL := Pixel 4 XL
 

@@ -21,7 +21,7 @@ TARGET_NEEDS_DTBOIMAGE := true
 # Manifests
 DEVICE_MANIFEST_FILE += device/google/coral/aosp_manifest.xml
 
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/aosp/config/device_framework_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/infinity/config/device_framework_matrix.xml
 
 # Partitions
 AB_OTA_PARTITIONS += \
@@ -29,7 +29,7 @@ AB_OTA_PARTITIONS += \
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Reserve space for gapps install
--include vendor/aosp/config/BoardConfigReservedSize.mk
+-include vendor/infinity/config/BoardConfigReservedSize.mk
 
 # SELinux
 BOARD_SEPOLICY_DIRS += device/google/coral/sepolicy-lineage/dynamic
