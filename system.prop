@@ -1,0 +1,7 @@
+#
+# Market name and custom device info
+ro.product.marketname=Pixel 4 XL
+ro.infinity.soc=Snapdragon 855
+ro.infinity.battery=3700 mAh
+ro.infinity.display=1440 x 3040, 90 Hz P-OLED
+ro.infinity.camera=12.2MP + 16MP

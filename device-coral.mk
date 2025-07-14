@@ -40,3 +40,5 @@ PRODUCT_PACKAGES += \
     SettingsOverlayG020J \
     SettingsOverlayG020P \
     SettingsOverlayG020Q \
+
+PRODUCT_COMPATIBILITY_MATRIX_LEVEL := 6
