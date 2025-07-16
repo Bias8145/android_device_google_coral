@@ -21,11 +21,11 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/infinity_coral.mk \
-    $(LOCAL_DIR)/infinity_flame.mk \
-    $(LOCAL_DIR)/infinity_coral_hwasan.mk \
-    $(LOCAL_DIR)/infinity_flame_hwasan.mk
+    $(LOCAL_DIR)/aosp_coral.mk \
+    $(LOCAL_DIR)/aosp_flame.mk \
+    $(LOCAL_DIR)/aosp_coral_hwasan.mk \
+    $(LOCAL_DIR)/aosp_flame_hwasan.mk
 
 COMMON_LUNCH_CHOICES := \
-    infinity_coral-trunk_staging-userdebug \
-    infinity_flame-trunk_staging-userdebug
+    aoap_coral-trunk_staging-userdebug \
+    aosp_flame-trunk_staging-userdebug
