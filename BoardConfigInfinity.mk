@@ -37,3 +37,7 @@ BOARD_SEPOLICY_DIRS += device/google/coral/sepolicy-lineage/vendor
 
 # Verified Boot
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
+
+# Props
+DEVICE_PATH := device/google/coral
+TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
