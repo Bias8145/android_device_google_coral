@@ -190,3 +190,6 @@ ro.support_one_handed_mode=true
 
 # VENC
 vendor.qc2.venc.avgqp.enable=1
+
+# Maintainer
+ro.lunaris.maintainer=khaliq

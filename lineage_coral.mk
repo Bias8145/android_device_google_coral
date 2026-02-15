@@ -43,6 +43,10 @@ PRODUCT_MANUFACTURER := Google
 PRODUCT_MODEL := Pixel 4 XL
 PRODUCT_NAME := lineage_coral
 
+TARGET_SUPPORTED_REFRESH_RATES := 60,90
+WITH_GMS := true
+WITH_BCR := true
+
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="coral-user 13 TP1A.221005.002.B2 9382335 release-keys" \
     BuildFingerprint=google/coral/coral:13/TP1A.221005.002.B2/9382335:user/release-keys \
