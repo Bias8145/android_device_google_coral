@@ -4,7 +4,7 @@
 #
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/voltage/config/common_full_phone.mk)
 
 #
 # All components inherited here go to system image
@@ -34,18 +34,18 @@ TARGET_SUPPORTS_OMX_SERVICE := false
 $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 
-include device/google/coral/coral/device.mk
+include device/google/coral/flame/device.mk
 
 # Device identifier. This must come after all inclusions
 PRODUCT_BRAND := google
-PRODUCT_DEVICE := coral
+PRODUCT_DEVICE := flame
 PRODUCT_MANUFACTURER := Google
-PRODUCT_MODEL := Pixel 4 XL
-PRODUCT_NAME := lineage_coral
+PRODUCT_MODEL := Pixel 4
+PRODUCT_NAME := voltage_flame
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="coral-user 13 TP1A.221005.002.B2 9382335 release-keys" \
-    BuildFingerprint=google/coral/coral:13/TP1A.221005.002.B2/9382335:user/release-keys \
-    DeviceProduct=coral
+    BuildDesc="flame-user 13 TP1A.221005.002.B2 9382335 release-keys" \
+    BuildFingerprint=google/flame/flame:13/TP1A.221005.002.B2/9382335:user/release-keys \
+    DeviceProduct=flame
 
-$(call inherit-product, vendor/google/coral/coral-vendor.mk)
+$(call inherit-product, vendor/google/flame/flame-vendor.mk)
