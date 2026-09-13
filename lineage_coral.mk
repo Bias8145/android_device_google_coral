@@ -4,7 +4,7 @@
 #
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/voltage/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 #
 # All components inherited here go to system image
@@ -41,7 +41,17 @@ PRODUCT_BRAND := google
 PRODUCT_DEVICE := coral
 PRODUCT_MANUFACTURER := Google
 PRODUCT_MODEL := Pixel 4 XL
-PRODUCT_NAME := voltage_coral
+PRODUCT_NAME := lineage_coral
+PRODUCT_BUILD_IGNORE_APEX_CONTRIBUTION_CONTENTS := true
+
+TARGET_BOOT_ANIMATION_RES := 1080
+
+DERPFEST_BUILD_VARIANT := Stable
+TARGET_INCLUDE_ACCORD := false
+TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_DISABLE_EPPE := true
+TARGET_EXCLUDE_BACKUPTOOL := true
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="coral-user 13 TP1A.221005.002.B2 9382335 release-keys" \
